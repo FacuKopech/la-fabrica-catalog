@@ -1,0 +1,87 @@
+<div class="toolbar" role="banner">
+  <div class="laFabricaLogoContainer">
+    <img class="logoImg" src="../assets/logo/logoNoBg.png" alt="Logo">
+  </div>
+  <div class="navBarButtonsContainer">
+    <button class="navButton" data-target="companyImgSection">Quiénes Somos</button>
+    <button class="navButton" data-target="productsSection">Productos</button>
+    <button class="navButton" data-target="worksSection">Nuestros Trabajos</button>
+    <button class="navButton" data-target="contactSection">Contacto</button>
+  </div>
+  <header class="headerNavMenu">
+    <nav class="navButtons nav" (click)="toggleNav()">
+      <div id="mainListDiv" [ngClass]="{'show_list': isListVisible}" class="main_list">
+        <div class="navlinks">
+          <div class="divLinksContainer">
+            <a class="liElement" href="#" data-target="companyImgSection">
+              <p>Quiénes Somos</p>
+            </a><a class="liElement" href="#" data-target="productsSection">
+              <p>Productos</p>
+            </a><a class="liElement" href="#" data-target="worksSection">
+              <p>Nuestros Trabajos</p>
+            </a><a class="liElement" href="#" data-target="contactSection">
+              <p>Contacto</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <span #navTrigger [ngClass]="{'active': isListVisible}" class="navTrigger"><i></i><i></i><i></i></span>
+    </nav>
+  </header>
+</div>
+<div class="content" role="main">
+  <section id="companyImgSection" class="companyImgSection">
+  </section>
+  <section id="productsSection" class="productsSection">
+    <div class="divTitleSection">
+      <div class="divH2Title">
+        <h2 class="h2Section">Productos</h2>
+        <button class="btnInfo" title="Más info" (click)="togglePopup()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6 svgInfoIcon">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+          </svg>
+        </button>
+      </div>
+      <app-image-slider-products #productsImgSliderComponent
+        (openPopupProducts)="openPopupProducts($event)"></app-image-slider-products>
+    </div>
+  </section>
+  <app-products-info-popup class="popup" *ngIf="isPopupVisible" (closePopup)="togglePopup()"></app-products-info-popup>
+  <section id="worksSection" class="worksSection">
+    <div class="divTitleSection">
+      <div class="divH2Title">
+        <h2 class="h2Section">Nuestros Trabajos</h2>
+      </div>
+      <app-image-slider #worksImgSliderComponent (openPopupWorks)="openPopupWorks($event)"></app-image-slider>
+    </div>
+  </section>
+  <section id="contactSection" class="contactSection">
+    <div class="divTitleSection">
+      <h2 class="h2Section">Contacto</h2>
+      <div class="divContactButtons">
+        <div class="divContactButtonsContainer">
+          <button>
+            <i class="fa fa-whatsapp"></i>
+          </button>
+          <button>
+            <i class="fa fa-instagram"></i>
+          </button>
+        </div>
+      </div>
+      <div class="divLocationMap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.9715548441504!2d-60.76333312269787!3d-32.92534977081624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6538e118a8e21%3A0xea1a21134fb03203!2sLa%20Fabrica%20Aberturas%20De%20Aluminio!5e0!3m2!1ses-419!2sar!4v1711025823678!5m2!1ses-419!2sar"
+          class="locationMap" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="isImgPopupVisible" #myModal class="modal">
+    <span class="close" (click)="closePopup()">&times;</span>
+    <img #imgModal class="modal-content">
+    <div id="caption"></div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

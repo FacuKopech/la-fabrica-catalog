@@ -1,0 +1,46 @@
+
+.divPopupContainer{
+    height: 90%;
+}
+
+.divPopupContainer .divPopupTitle h2{
+    font-family: "F1Font";
+}
+
+.divPopupCloseBtnContainer{
+    display: flex;
+    justify-content: center;
+    width: 14%;
+}
+.btn {
+    background-color: #D38B5D;
+    padding: 14px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 17px;
+    border: 2px dashed #D38B5D;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .4s;
+   }
+   
+   .btn span:last-child {
+    display: none;
+   }
+   
+   .btn:hover {
+    transition: .4s;
+    border: 2px dashed #D38B5D;
+    background-color: #fff;
+    color: #D38B5D;
+   }
+   
+   .btn:active {
+    background-color: #eec19e;
+   }
+   
+   @font-face {
+    font-family: 'F1Font';
+    src: url('../../../assets/fonts/Formula1-Regular.otf') format('opentype');
+}
