@@ -9,7 +9,7 @@
     <button class="navButton" data-target="contactSection">Contacto</button>
   </div>
   <header class="headerNavMenu">
-    <nav class="navButtons nav" (click)="toggleNav()">
+    <nav class="navButtons nav" (mouseenter)="toggleNav(true)" (mouseleave)="toggleNav(false)" (click)="clickOnNav()">
       <div id="mainListDiv" [ngClass]="{'show_list': isListVisible}" class="main_list">
         <div class="navlinks">
           <div class="divLinksContainer">
@@ -48,6 +48,7 @@
         (openPopupProducts)="openPopupProducts($event)"></app-image-slider-products>
     </div>
   </section>
+  <div class="divCover" *ngIf="isPopupVisible"></div>
   <app-products-info-popup class="popup" *ngIf="isPopupVisible" (closePopup)="togglePopup()"></app-products-info-popup>
   <section id="worksSection" class="worksSection">
     <div class="divTitleSection">
@@ -77,6 +78,7 @@
       </div>
     </div>
   </section>
+  
   <div *ngIf="isImgPopupVisible" #myModal class="modal">
     <span class="close" (click)="closePopup()">&times;</span>
     <img #imgModal class="modal-content">

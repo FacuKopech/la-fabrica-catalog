@@ -7,15 +7,13 @@ import { ImageSliderComponent } from './components/image-slider-works/image-slid
 import { IonicModule } from '@ionic/angular';
 import { ImageSliderProductsComponent } from './components/image-slider-products/image-slider-products.component';
 import { ProductsInfoPopupComponent } from './popups/products-info-popup/products-info-popup.component';
-import { WorkDetailsPopupComponent } from './popups/work-details-popup/work-details-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageSliderComponent,
     ImageSliderProductsComponent,
-    ProductsInfoPopupComponent,
-    WorkDetailsPopupComponent
+    ProductsInfoPopupComponent
   ],
   imports: [
     BrowserModule,

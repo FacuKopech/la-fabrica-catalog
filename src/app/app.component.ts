@@ -18,8 +18,16 @@ export class AppComponent implements OnInit {
   imgSrc: string = "";
   isListVisible = false;
 
-  toggleNav() {
-    this.isListVisible = !this.isListVisible;
+  toggleNav(hovered: boolean) {
+    this.isListVisible = hovered
+  } 
+
+  clickOnNav(){
+    if(this.isListVisible){
+      this.isListVisible = false;
+    }else{
+      this.isListVisible = true;
+    }
   }
 
   closeNav() {
