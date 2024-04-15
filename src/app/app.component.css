@@ -187,12 +187,17 @@ section .divTitleSection {
 .btnInfo {
     background: none;
     border: none;
+    outline: none;
 }
 
 .svgInfoIcon {
     width: 30px;
     height: 30px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+    fill: none;
+    outline: none;
 }
 
 .btnInfo:hover .svgInfoIcon {
