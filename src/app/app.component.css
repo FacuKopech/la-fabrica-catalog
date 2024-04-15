@@ -523,6 +523,12 @@ section .divTitleSection {
 
 }
 
+@media (max-width:414px){
+    .divContactButtons{
+        width: 64%;
+    }
+}
+
 @media (width: 280px){
     .nav .main_list .navlinks {
         flex-direction: column;

@@ -166,7 +166,7 @@
     z-index: 5;
     user-select: none;
     height: 45px;
-    width: 40%;
+    width: 110px;
     margin-bottom: 10px;
 
     & .btn {
@@ -261,6 +261,12 @@
             left: calc(50% + 420px);
             opacity: 0;
         }
+    }
+}
+
+@media(width < 400px){
+    .nav{
+        width: 40%;
     }
 }
 
