@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import mediumZoom from 'medium-zoom';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,7 @@ import mediumZoom from 'medium-zoom';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor() { }
+  constructor(private el: ElementRef) { }
   @ViewChild('productsImgSliderComponent') productsImgSliderComponentRef!: ElementRef;
   @ViewChild('worksImgSliderComponent') worksImgSliderComponentRef!: ElementRef;
   @ViewChild('imgModal', { static: false }) imgModal!: ElementRef<HTMLImageElement>;
@@ -17,15 +16,16 @@ export class AppComponent implements OnInit {
   isProductsSlider: boolean = false;
   imgSrc: string = "";
   isListVisible = false;
+  useAnimationClasses = false;
 
   toggleNav(hovered: boolean) {
     this.isListVisible = hovered
-  } 
+  }
 
-  clickOnNav(){
-    if(this.isListVisible){
+  clickOnNav() {
+    if (this.isListVisible) {
       this.isListVisible = false;
-    }else{
+    } else {
       this.isListVisible = true;
     }
   }
@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-   clickHandler = () => {
+  clickHandler = () => {
     if (this.imgModal.nativeElement.classList.contains('zoomedIn')) {
       this.imgModal.nativeElement.classList.toggle('zoomedOut');
       this.imgModal.nativeElement.classList.remove('zoomedIn');
@@ -118,4 +118,68 @@ export class AppComponent implements OnInit {
       this.imgModal.nativeElement.style.cursor = "zoom-out";
     }
   };
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    const currentScrollPos = window.scrollY;
+    if(window.innerWidth >= 745){
+      if (currentScrollPos > 400) {
+        this.useAnimationClasses = true;
+        const sectionTop = this.el.nativeElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight) {
+          this.el.nativeElement.classList.add("animate");
+    
+          setTimeout(() => {
+            const divText = this.el.nativeElement.querySelector(".divCompanyDetailsText");
+            divText.classList.add("animate-text");
+          }, 500);
+    
+          const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
+          imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
+            setTimeout(() => {
+              imageContainer.classList.add("animate");
+            }, (index + 1) * 700);
+          });
+          }
+      }else{
+        this.useAnimationClasses = false;
+        const divText: HTMLDivElement = this.el.nativeElement.querySelector(".divCompanyDetailsText");
+        divText.classList.remove("animate-text");
+        const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
+        imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
+          imageContainer.classList.remove("animate");
+        });
+      }
+    }else{
+      if (currentScrollPos > 1000) {
+        this.useAnimationClasses = true;
+        const sectionTop = this.el.nativeElement.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight) {
+          this.el.nativeElement.classList.add("animate");
+    
+          setTimeout(() => {
+            const divText = this.el.nativeElement.querySelector(".divCompanyDetailsText");
+            divText.classList.add("animate-text");
+          }, 500);
+    
+          const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
+          imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
+            setTimeout(() => {
+              imageContainer.classList.add("animate");
+            }, (index + 1) * 700);
+          });
+          }
+      }else{
+        this.useAnimationClasses = false;
+        const divText: HTMLDivElement = this.el.nativeElement.querySelector(".divCompanyDetailsText");
+        divText.classList.remove("animate-text");
+        const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
+        imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
+          imageContainer.classList.remove("animate");
+        });
+      }
+    }
+  }
 }

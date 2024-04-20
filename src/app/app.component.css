@@ -128,9 +128,7 @@ header {
     /* max-width: fit-content; */
 }
 
-.content section {
-    width: 95%;
-    border-radius: 40px;
+.content section { 
     margin-top: 4px;
     opacity: 0;
     transform: translateY(50px);
@@ -138,7 +136,7 @@ header {
     margin-bottom: 6px;
 }
 
-section .divTitleSection {
+.divTitleSection {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -155,6 +153,7 @@ section .divTitleSection {
     min-width: 20%;
     margin-bottom: 10px;
     flex-wrap: wrap;
+    width: 60%;
 }
 
 .h2Section {
@@ -166,19 +165,25 @@ section .divTitleSection {
 }
 
 .content .companyImgSection {
-    width: 95%;
+    width: 100%;
     height: 487px;
-    background-image: url('../assets/company/companyImg.jpg');
+    background-image: url('../assets/company/companyImgImproved.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     animation-delay: 0.1s;
-    border-radius: 30px;
-    border: 3px solid #D38B5D;
+}
 
+.sectionImgsSliders{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 98%;
 }
 
 .productsSection {
+    width: 50%;
     position: relative;
     height: 755px;
     animation-delay: 0.6s;
@@ -211,18 +216,21 @@ section .divTitleSection {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(4px);
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     z-index: 999;
     position: fixed;
     justify-content: center;
-    height: 75%;
-    width: 92%;
+    height: 70%;
+    width: 95%;
     border-radius: 20px;
     border: 3px solid #D38B5D;
     background-color: #eec19e;
@@ -230,18 +238,124 @@ section .divTitleSection {
 }
 
 .worksSection {
+    width: 50%;
     position: relative;
     height: 755px;
     animation-delay: 0.9s;
 }
 
+.sectionCompanyDetails{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
 
-.contactSection {
+.divCompanyDetailsContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-image: url('../assets/company/20231031_154007.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divCompanyDetailsContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #eec19e96; 
+    z-index: 1;
+}
+
+.divCompanyDetailsText{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    z-index: 9;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.divCompanyDetailsText p{
+    font-size: xxx-large;
+    margin-left: 10px;
+    font-family: "Gilda Display";
+    font-style: italic;
+}
+
+.divCompanyDetailsImagesContainer{
     display: flex;
     flex-direction: column;
+    width: 50%;
+    z-index: 9;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.divCompanyDetailsImagesContainer img{
+    width: 205px;
+    height: 315px;
+    border-radius: 10px;
+    border: 2px solid #D38B5D;
+    transition: transform 0.3s ease; 
+}
+
+.divCompanyDetailsImagesContainer img:hover{
+    transform: translateY(4px);
+}
+
+.divUpperImgs{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 6px;
+}
+
+.divBottomImgs{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
+.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.contactSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     height: 700px;
-    background-color: #eec19e;
     animation-delay: 0.12s;
+}
+
+footer .divTitleSection{
+    background-color: #eec19e;
+    width: 100%;
+    border-radius: 25px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 
@@ -327,6 +441,65 @@ section .divTitleSection {
     }
 }
 
+@media (max-width: 745px){
+    .sectionImgsSliders{
+        flex-direction: column;
+    }
+
+    .productsSection{
+        width: 97%;
+    }
+    .worksSection{
+        margin-top: 10px;
+        width: 97%;
+    }
+
+    .popup{
+        width: 95%;
+    }
+
+    .divCompanyDetailsContainer{
+        flex-direction: column;
+    }
+
+    .divCompanyDetailsText{
+        width: 100%;
+    }
+
+    .divCompanyDetailsImagesContainer{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .divCompanyDetailsImagesContainer img{
+        width: 45%;
+        height: 97%;
+    }
+    .divUpperImgs{
+        justify-content: space-around;
+        width: 50%;
+        margin-bottom: 6px;
+    }
+    .divBottomImgs{
+        justify-content: space-around;
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px){
+    .divCompanyDetailsText p{
+        font-size: xx-large;
+    }
+}
+
+@media (max-width: 510px){
+    .divCompanyDetailsText p{
+        font-size: larger;
+    }
+}
+
+
 @media screen and (min-width: 575px) and (max-width: 1300px) {
  
     .divH2Title {
@@ -349,6 +522,16 @@ section .divTitleSection {
 
     .locationMap {
         border-radius: 7px;
+    }
+}
+
+@media (max-width: 575px){
+    .divContactButtons {
+        width: 48%;
+    }
+
+    footer .divTitleSection{
+        width: 100%;
     }
 }
 
@@ -557,6 +740,10 @@ section .divTitleSection {
     top: 0;
     bottom: 0;
     z-index: 9999;
+}
+
+.navTriggerHidden{
+    z-index: 0;
 }
 
 .navTrigger i {
