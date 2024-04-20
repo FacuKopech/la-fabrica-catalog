@@ -129,7 +129,6 @@ header {
 }
 
 .content section { 
-    margin-top: 4px;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 0.9s ease forwards;
@@ -248,8 +247,8 @@ header {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 20px;
     opacity: 0;
+    margin-top: 20px !important;
     transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
 }
@@ -262,6 +261,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 .divCompanyDetailsContainer::after {
@@ -458,6 +458,7 @@ footer .divTitleSection{
         width: 95%;
     }
 
+  
     .divCompanyDetailsContainer{
         flex-direction: column;
     }
@@ -484,6 +485,25 @@ footer .divTitleSection{
     .divBottomImgs{
         justify-content: space-around;
         width: 50%;
+    }
+}
+
+@media (width < 405px){
+   
+    .productsSection .divH2Title{
+        width: -webkit-fill-available;
+    }
+    .worksSection .divH2Title{
+        width: 70%;
+    }
+    .sectionCompanyDetails{
+        margin-top: 20px !important;
+    }
+}
+
+@media (width < 350px){
+    .worksSection .divH2Title{
+        width: -webkit-fill-available;
     }
 }
 
