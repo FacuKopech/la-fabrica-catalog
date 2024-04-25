@@ -6,7 +6,10 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+    this.updatePaddingValue();
+
+  }
   @ViewChild('productsImgSliderComponent') productsImgSliderComponentRef!: ElementRef;
   @ViewChild('worksImgSliderComponent') worksImgSliderComponentRef!: ElementRef;
   @ViewChild('imgModal', { static: false }) imgModal!: ElementRef<HTMLImageElement>;
@@ -17,6 +20,7 @@ export class AppComponent implements OnInit {
   imgSrc: string = "";
   isListVisible = false;
   useAnimationClasses = false;
+  paddingValue: string = "0px";
 
   toggleNav(hovered: boolean) {
     this.isListVisible = hovered
@@ -122,27 +126,27 @@ export class AppComponent implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     const currentScrollPos = window.scrollY;
-    if(window.innerWidth >= 745){
+    if (window.innerWidth >= 745) {
       if (currentScrollPos > 400) {
         this.useAnimationClasses = true;
         const sectionTop = this.el.nativeElement.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         if (sectionTop < windowHeight) {
           this.el.nativeElement.classList.add("animate");
-    
+
           setTimeout(() => {
             const divText = this.el.nativeElement.querySelector(".divCompanyDetailsText");
             divText.classList.add("animate-text");
           }, 500);
-    
+
           const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
           imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
             setTimeout(() => {
               imageContainer.classList.add("animate");
             }, (index + 1) * 700);
           });
-          }
-      }else{
+        }
+      } else {
         this.useAnimationClasses = false;
         const divText: HTMLDivElement = this.el.nativeElement.querySelector(".divCompanyDetailsText");
         divText.classList.remove("animate-text");
@@ -151,27 +155,27 @@ export class AppComponent implements OnInit {
           imageContainer.classList.remove("animate");
         });
       }
-    }else{
+    } else {
       if (currentScrollPos > 1000) {
         this.useAnimationClasses = true;
         const sectionTop = this.el.nativeElement.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         if (sectionTop < windowHeight) {
           this.el.nativeElement.classList.add("animate");
-    
+
           setTimeout(() => {
             const divText = this.el.nativeElement.querySelector(".divCompanyDetailsText");
             divText.classList.add("animate-text");
-          }, 500);
-    
+          }, 1500);
+
           const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
           imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
             setTimeout(() => {
               imageContainer.classList.add("animate");
-            }, (index + 1) * 700);
+            }, (index + 1) * 800);
           });
-          }
-      }else{
+        }
+      } else {
         this.useAnimationClasses = false;
         const divText: HTMLDivElement = this.el.nativeElement.querySelector(".divCompanyDetailsText");
         divText.classList.remove("animate-text");
@@ -181,5 +185,14 @@ export class AppComponent implements OnInit {
         });
       }
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updatePaddingValue();
+  }
+
+  private updatePaddingValue() {
+    this.paddingValue = (window.innerWidth * 0.25) + 'px';
   }
 }
