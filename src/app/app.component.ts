@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   useAnimationClasses = false;
   paddingValue: string = "0px";
   phoneNumber: string = '+543415772367';
-  emailAddress: string = 'recipient@example.com';
+  emailAddress: string = 'lafabrica@gmail.com';
 
   toggleNav(hovered: boolean) {
     this.isListVisible = hovered
@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
   }
 
   openEmailClient() {
-    var subject = 'La Fabrica - Catalogo  Consulta';
+    var subject = 'La Fabrica - Catalogo - Consulta';
     var body = 'Hola! Estaba viendo su catalogo y queria saber...';
     var url = 'mailto:' + this.emailAddress + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     window.location.href = url;
