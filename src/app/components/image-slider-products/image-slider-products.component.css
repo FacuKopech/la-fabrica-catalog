@@ -494,6 +494,12 @@
     }
 }
 
+@media(width < 500px) {
+    .nav .btn {
+        height: 52px;
+    }
+}
+
 @media(width < 400px) {
     .nav {
         width: 40%;
