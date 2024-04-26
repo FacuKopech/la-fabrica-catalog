@@ -1,6 +1,5 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -184,7 +183,9 @@
     margin-bottom: 10px;
 
     & .btn {
-        background-color: rgba(255, 255, 255, 0.5);
+
+        width: 50%;
+        background-color: rgb(233 233 233 / 45%);
         color: rgba(0, 0, 0, 0.7);
         border: 2px solid rgba(0, 0, 0, 0.6);
         margin: 5px;
