@@ -91,11 +91,14 @@
     <h2 class="h2Section">Contacto</h2>
     <div class="divContactButtons">
       <div class="divContactButtonsContainer">
-        <button>
+        <button (click)="openWhatsAppChat()">
           <i class="fa fa-whatsapp"></i>
         </button>
-        <button>
-          <i class="fa fa-instagram"></i>
+        <button (click)="openDialScreen()">
+          <i class="fa fa-phone"></i>
+        </button>
+        <button (click)="openEmailClient()">
+          <i class="fa fa-envelope"></i>
         </button>
       </div>
     </div>

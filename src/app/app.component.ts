@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   isListVisible = false;
   useAnimationClasses = false;
   paddingValue: string = "0px";
+  phoneNumber: string = '+543415772367';
+  emailAddress: string = 'recipient@example.com';
 
   toggleNav(hovered: boolean) {
     this.isListVisible = hovered
@@ -123,6 +125,24 @@ export class AppComponent implements OnInit {
     }
   };
 
+  openWhatsAppChat() {
+    const message: string = encodeURIComponent('Hola! Estaba viendo su catalogo y queria saber...');
+    var url = 'https://wa.me/' + this.phoneNumber + '?text=' + message;
+    window.open(url, '_blank');
+  }
+
+  openDialScreen() {
+    var url = 'tel:' + this.phoneNumber;
+    window.location.href = url;
+  }
+
+  openEmailClient() {
+    var subject = 'La Fabrica - Catalogo  Consulta';
+    var body = 'Hola! Estaba viendo su catalogo y queria saber...';
+    var url = 'mailto:' + this.emailAddress + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+  }
+
   @HostListener("window:scroll", [])
   onWindowScroll() {
     const currentScrollPos = window.scrollY;
@@ -166,13 +186,13 @@ export class AppComponent implements OnInit {
           setTimeout(() => {
             const divText = this.el.nativeElement.querySelector(".divCompanyDetailsText");
             divText.classList.add("animate-text");
-          }, 1500);
+          }, 0.05);
 
           const imageContainers = this.el.nativeElement.querySelectorAll(".divCompanyDetailsImagesContainer > div");
           imageContainers.forEach((imageContainer: HTMLDivElement, index: number) => {
             setTimeout(() => {
               imageContainer.classList.add("animate");
-            }, (index + 1) * 800);
+            }, (index + 1) * 0.05);
           });
         }
       } else {
