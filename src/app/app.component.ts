@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   useAnimationClasses = false;
   paddingValue: string = "0px";
   phoneNumber: string = '+543415772367';
-  emailAddress: string = 'lafabrica@gmail.com';
+  emailAddress: string = 'la-fabrica@outlook.es';
 
   toggleNav(hovered: boolean) {
     this.isListVisible = hovered
