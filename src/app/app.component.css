@@ -381,7 +381,7 @@ footer .divTitleSection{
 .divContactButtonsContainer {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .divLocationMap {
@@ -490,6 +490,12 @@ footer .divTitleSection{
     }
 }
 
+@media (width < 500px){
+    .divContactButtonsContainer{
+        justify-content: space-between;
+    }
+}
+
 @media (width < 405px){
    
     .productsSection .divH2Title{
@@ -549,7 +555,7 @@ footer .divTitleSection{
 
 @media (max-width: 575px){
     .divContactButtons {
-        width: 48%;
+        width: 88%;
     }
 
     footer .divTitleSection{
